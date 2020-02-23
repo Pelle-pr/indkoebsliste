@@ -14,7 +14,18 @@
 <body>
 
 Her kan du se listen af brugere. Du kan også slette brugere.
+<br>
+<br>
+${requestScope.besked}
 
+
+<form action="adminServlet" method="post">
+
+    <label for="fname">Brugernavn: </label><br>
+    <input type="text" id="fname" name="navn"><br>
+    <input type="submit" value="Slet">
+
+</form>
 <br>
 <br>
 
