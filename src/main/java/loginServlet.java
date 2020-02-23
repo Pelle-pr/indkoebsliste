@@ -26,11 +26,15 @@ public class loginServlet extends HttpServlet {
             Map<String,String> brugerMap = new HashMap<>();
 
             brugerMap.put("test","test");
+            brugerMap.put("admin","admin");
 
             servletContext.setAttribute("brugerMap", brugerMap);
 
         }
-        if (!((Map<String,String>) servletContext.getAttribute("brugerMap")).containsKey(navn)){
+
+
+
+            if (!((Map<String,String>) servletContext.getAttribute("brugerMap")).containsKey(navn)){
 
             //todo gå til login siden
 
@@ -39,6 +43,12 @@ public class loginServlet extends HttpServlet {
 
         }
         if (((Map<String,String>) servletContext.getAttribute("brugerMap")).get(navn).equalsIgnoreCase(kodeord)){
+
+            if (navn.equalsIgnoreCase("admin")){
+                //todo gå til admin side
+                request.getRequestDispatcher("WEB-INF/admin.jsp").forward(request,response);
+
+            }
 
             //todo gå til huskelisten
             request.getRequestDispatcher("WEB-INF/huskelisten.jsp").forward(request,response);

@@ -26,9 +26,9 @@ ${requestScope.besked}
 <br>
 
 <form action="opretServlet" method="post">
-    <label for="fname">Navn: </label><br>
+    <label for="fname">Brugernavn: </label><br>
     <input type="text" id="fname" name="navn"><br>
-    <label for="lname">Kode Ord:</label><br>
+    <label for="lname">Kodeord:</label><br>
     <input type="text" id="lname" name="kodeord"><br><br>
     <input type="submit" value="Opret">
 </form>
