@@ -1,9 +1,12 @@
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @WebServlet(name = "loginServlet", urlPatterns = {"/loginServlet"})
 public class loginServlet extends HttpServlet {
@@ -12,7 +15,39 @@ public class loginServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        response.getWriter().println("Du ramte loginServlet");
+        ServletContext servletContext = getServletContext();
+
+        String navn = request.getParameter("navn");
+        String kodeord = request.getParameter("kodeord");
+
+
+        if(servletContext.getAttribute("brugerMap") == null){
+
+            Map<String,String> brugerMap = new HashMap<>();
+
+            brugerMap.put("test","test");
+
+            servletContext.setAttribute("brugerMap", brugerMap);
+
+        }
+        if (!((Map<String,String>) servletContext.getAttribute("brugerMap")).containsKey(navn)){
+
+            //todo gå til login siden
+
+            request.setAttribute("besked", "Brugernavnet findes ikke");
+            request.getRequestDispatcher("/index.jsp").forward(request,response);
+
+        }
+        if (((Map<String,String>) servletContext.getAttribute("brugerMap")).get(navn).equalsIgnoreCase(kodeord)){
+
+            //todo gå til huskelisten
+            request.getRequestDispatcher("WEB-INF/huskelisten.jsp").forward(request,response);
+
+        }
+
+        request.setAttribute("besked", "Kodeord er forkert");
+        request.getRequestDispatcher("/index.jsp").forward(request,response);
+        //todo gå til index siden
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

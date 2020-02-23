@@ -14,6 +14,10 @@
 <h1> Velkommen til din online indkøbsliste</h1>
 
 <br>
+
+${requestScope.besked}
+
+
 <form action="loginServlet" method="post">
     <label for="fname">Navn: </label><br>
     <input type="text" id="fname" name="navn"><br>
@@ -21,7 +25,6 @@
     <input type="text" id="lname" name="kodeord"><br><br>
     <input type="submit" value="Submit">
 </form>
-
 
 
 </body>
