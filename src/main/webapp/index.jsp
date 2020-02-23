@@ -13,5 +13,16 @@
 <body>
 <h1> Velkommen til din online indkøbsliste</h1>
 
+<br>
+<form action="loginServlet" method="post">
+    <label for="fname">Navn: </label><br>
+    <input type="text" id="fname" name="navn"><br>
+    <label for="lname">Kode Ord:</label><br>
+    <input type="text" id="lname" name="kodeord"><br><br>
+    <input type="submit" value="Submit">
+</form>
+
+
+
 </body>
 </html>
